@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "518116805481",
+    "firebase_url": "https://bananaaigoo.firebaseio.com",
+    "project_id": "bananaaigoo",
+    "storage_bucket": "bananaaigoo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:518116805481:android:a3648f860fa8ad94",
+        "android_client_info": {
+          "package_name": "dztn.dev.bananaaigoo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "518116805481-vn243htnelnr77igkp0g29699qrpjp7a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dztn.dev.bananaaigoo",
+            "certificate_hash": "b19f3380ba22e06c052489c198a526429a7035f3"
+          }
+        },
+        {
+          "client_id": "518116805481-de9oeq5gm3a04g08ratct1ofpdlm1e33.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5GYWHGw_mvQaRLCLtRdH7nWu43wM1IdA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "518116805481-de9oeq5gm3a04g08ratct1ofpdlm1e33.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
