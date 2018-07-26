@@ -1,19 +1,19 @@
 package dztn.dev.bananaaigoo.Model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private String NamaLengkap;
     private String NoTelp;
-    private String Password;
 
 
     public User() {
 
     }
 
-    public User(String namaLengkap, String noTelp, String password) {
+    public User(String namaLengkap, String noTelp) {
         NamaLengkap = namaLengkap;
         NoTelp = noTelp;
-        Password = password;
     }
 
     public String getNamaLengkap() {
@@ -30,13 +30,5 @@ public class User {
 
     public void setNoTelp(String noTelp) {
         NoTelp = noTelp;
-    }
-
-    public String getPassword() {
-        return Password;
-    }
-
-    public void setPassword(String password) {
-        Password = password;
     }
 }

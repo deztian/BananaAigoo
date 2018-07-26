@@ -32,6 +32,7 @@ import java.util.ArrayList;
 
 import dztn.dev.bananaaigoo.Adapter.RvMenuAdapter;
 import dztn.dev.bananaaigoo.Common.Common;
+import dztn.dev.bananaaigoo.Model.Cart;
 import dztn.dev.bananaaigoo.Model.Category;
 import dztn.dev.bananaaigoo.Model.ItemCart;
 import dztn.dev.bananaaigoo.Model.User;
@@ -50,8 +51,10 @@ public class Home extends AppCompatActivity
     Integer totalBelanja = 0;
 
     private ArrayList<Category> items = new ArrayList<>();
+    private ArrayList<Cart> cart = new ArrayList<>();
 
     RecyclerView recycler_menu;
+    Intent intentPesan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,12 +105,6 @@ public class Home extends AppCompatActivity
         recycler_menu.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recycler_menu.setAdapter(adapter);
 
-        pesan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                
-            }
-        });
     }
 
     private void getCart() {
@@ -119,11 +116,21 @@ public class Home extends AppCompatActivity
                     ItemCart item = data.getValue(ItemCart.class);
                     for (Category i : items) {
                         if (i.getNama().equals(item.getNama())) {
+                            cart.add(new Cart(i.getNama(), i.getImage(), i.getImageDialog(), i.getHarga(), item.getQty(), item.getToping()));
                             totalBelanja += (Integer.valueOf(i.getHarga()) * Integer.valueOf(item.getQty())) + toping(item);
                         }
                     }
                 }
-                total.setText("Total\n"+totalBelanja.toString());
+                total.setText("Total\n" + totalBelanja.toString());
+                pesan.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        intentPesan = new Intent(Home.this, PesanDetailActivity.class);
+                        intentPesan.putExtra("CART", cart);
+                        intentPesan.putExtra("TOTAL", totalBelanja.toString());
+                        startActivity(intentPesan);
+                    }
+                });
             }
 
             @Override
@@ -135,9 +142,9 @@ public class Home extends AppCompatActivity
 
     private int toping(ItemCart item) {
         int tot = 0;
-        int[] harga = new int[]{3000,4000,6000,5000,5000};
+        int[] harga = new int[]{3000, 4000, 6000, 5000, 5000};
         for (int i = 0; i < 5; i++) {
-            if (item.getToping().get(i).booleanValue() == true){
+            if (item.getToping().get(i).booleanValue() == true) {
                 tot += harga[i];
             }
         }
@@ -177,9 +184,7 @@ public class Home extends AppCompatActivity
         if (id == R.id.nav_keranjang) {
             Intent intent = new Intent(this, KeranjangActivity.class);
             startActivity(intent);
-        } else if(id == R.id.nav_riwayat){
-
-        }else if (id == R.id.nav_keluar) {
+        } else if (id == R.id.nav_keluar) {
             auth.signOut();
             Intent intent = new Intent(this, MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

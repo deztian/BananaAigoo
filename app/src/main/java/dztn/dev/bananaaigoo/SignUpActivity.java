@@ -83,7 +83,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void addDataUser() {
-        User user = new User(edtName.getText().toString(), edtPhone.getText().toString(), edtPassword.getText().toString());
+        User user = new User(edtName.getText().toString(), edtPhone.getText().toString());
         table_user.child(firebaseAuth.getUid()).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
